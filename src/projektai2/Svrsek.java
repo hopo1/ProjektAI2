@@ -25,8 +25,8 @@ public class Svrsek {
     public ArrayList<ImageView> obrazky=new ArrayList<>();
     public Svrsek(){
         obrazky.add(srd);
-        obrazky.add(list);
         obrazky.add(kul);
+        obrazky.add(list);
         obrazky.add(zal);
     }
 }

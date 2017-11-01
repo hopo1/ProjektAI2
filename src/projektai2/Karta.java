@@ -70,10 +70,10 @@ public class Karta {
                barvaS="Srdce";
               break;
            case 1:
-               barvaS="Listy";
+               barvaS="Kule";
               break;
            case 2:
-               barvaS="Kule";
+               barvaS="Listy";
               break;
            case 3:
                barvaS="Žaludy";
