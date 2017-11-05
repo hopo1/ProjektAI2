@@ -65,11 +65,13 @@ catch (Exception e)
     }
     private void otoc() {
         ArrayList<Karta> odhBal= balB.proMichni();
-        int a=odhBal.size()-1;
+        int a=odhBal.size();
         for(int i=0;i<a;i++){
             bal.add(odhBal.get(0));
-            michej();
+            
         }
+        System.out.println("Otaceni");
+        michej();
     }
     public final Karta lizniSi(Boolean a){
         if(bal.isEmpty()){

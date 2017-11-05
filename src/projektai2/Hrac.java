@@ -102,5 +102,8 @@ public class Hrac {
     private int pocetKaret(){
         return ruka.size();
     }
-    
+    @Override
+    public String toString(){
+        return String.valueOf(ruka.size());
+    }
 }

@@ -7,6 +7,10 @@ package projektai2;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -36,12 +40,20 @@ public class OknoController implements Initializable {
     @FXML
     private HBox odh;
     @FXML
-    private Button liznout;
+    private Label protihrac1;
+    @FXML
+    private Label protihrac2;
+    @FXML
+    private Label protihrac3;
+    @FXML
+    private Label protihrac4;
+    @FXML
+    private HBox protihrac;
     @FXML
     private void hraj() {
-        if(svrsekVyber){
-        System.out.println("Ahoj hraj");
+        if(svrsekVyber){ 
         int vyber=rukaPole.getSelectionModel().getSelectedIndex();
+        if(vyber!=-1){
         int karet=h.hraci.get(h.getHracC()).hraj(vyber, h.dalsiKarta);
         if(karet==0){
             vyhra();
@@ -53,6 +65,7 @@ public class OknoController implements Initializable {
             }
             else{
             priprav(false);
+        }
         }
         }
         }
@@ -69,11 +82,8 @@ public class OknoController implements Initializable {
         h.dalsihrac();
         cisloH.setText(String.valueOf(h.getHracC()));
         //posledni karta
-        if(b){
-            odh.getChildren().remove(0);
-        }
-        else{
-        odh.getChildren().clear();
+        if(!b){
+            odh.getChildren().clear();
         }
         odh.getChildren().add(0, h.balB.posledni().getImgv());
         //ruka
@@ -82,14 +92,15 @@ public class OknoController implements Initializable {
         for(int x=0;x<velikostRuky;x++){
             rukaPole.getItems().add(h.hraci.get(h.getHracC()).ruka.get(x).getImgv());
         }
-        rukaPole.layout();
         rukaPole.refresh();
-        //funkcni tlacitko
-        liznout.setText(h.druhAkce);
+        //pocty karet ostatnich hracu
+        kartyHracu();
+        //liznout.setText(h.druhAkce);   nevim co to sakra je ale mozna to ma neco delat
     }
     @FXML
     private ListView l;
     private boolean svrsek() {
+        l.getItems().clear();
         for(int i=0;i<4;i++){
             ImageView imgv=h.svrsek.obrazky.get(i);
             int rozmer=30;
@@ -106,18 +117,27 @@ public class OknoController implements Initializable {
     @FXML
     private void vyberSvrsek(){
         int vyber=l.getSelectionModel().getSelectedIndex();
-        l.getItems().clear();
+        if(vyber!=-1){
         h.dalsiKarta[0]=vyber;
         odh.getChildren().clear();
         odh.getChildren().add(h.svrsek.obrazky.get(vyber));
         svrsekVyber=true;
         priprav(true);
-        
+           }
     }
     private Hra h;
+    private ObservableList<Label> list = FXCollections.observableArrayList();
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         h=new Hra(i);
+        
+        /*for(int a=0;a<(5-i);a++){
+            protihrac.getChildren().remove(0);
+        }*/
+        for(int b=0;b<i;b++){
+            Label lab=new Label();
+            list.add(lab);
+        }
         priprav(false);
     }    
 
@@ -128,6 +148,22 @@ public class OknoController implements Initializable {
         vyhra.setText("Vyhral hrac "+h.getHracC());
         cele.getChildren().add(vyhra);
     }
+    private void kartyHracu(){
+        int hraje=h.getHracC();
+        for(int a=1;a<i;a++){
+            int hrac=hraje+a;
+            if(hrac>i-1){
+                hrac-=i;
+            }
+            String s=h.hraci.get(hrac).toString();
+            int x=a-1;
+            list.get(list.size()-a-1).setText(s);
+        }
+        
+        protihrac.getChildren().clear();
+        protihrac.getChildren().addAll(list);
+    }
+    
 
    
     
