@@ -16,6 +16,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -145,8 +146,18 @@ public class OknoController implements Initializable {
     private void vyhra() {
         cele.getChildren().clear();
         Label vyhra=new Label();
+        Image img=new Image("File:vyhra.jpg");
+        ImageView imgv=new ImageView(img);
+        double sirka=cele.getWidth();
+        double vyska=cele.getHeight();
+        imgv.setFitHeight(vyska);
+        imgv.setFitWidth(sirka);
         vyhra.setText("Vyhral hrac "+h.getHracC());
-        cele.getChildren().add(vyhra);
+        /*int scale=2;
+        imgv.setScaleY(scale);
+        imgv.setScaleX(scale);*/
+        
+        cele.getChildren().addAll(imgv,vyhra);
     }
     private void kartyHracu(){
         int hraje=h.getHracC();
