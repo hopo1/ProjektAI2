@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
@@ -13,24 +14,25 @@
    <children>
       <VBox fx:id="cele" alignment="CENTER" layoutX="282.0" layoutY="126.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <HBox fx:id="protihrac" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="30.0" VBox.vgrow="ALWAYS">
-               <children>
-                  <Label fx:id="protihrac1" text="Label" />
-                  <Label fx:id="protihrac2" text="Label" />
-                  <Label fx:id="protihrac3" text="Label" />
-                  <Label fx:id="protihrac4" text="Label" />
-               </children>
+            <HBox fx:id="protihrac" alignment="CENTER" blendMode="SRC_ATOP" opacity="0.5" prefHeight="100.0" prefWidth="200.0" spacing="30.0" VBox.vgrow="ALWAYS">
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
             </HBox>
-            <HBox fx:id="odh" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0" VBox.vgrow="ALWAYS">
+            <HBox fx:id="proKartu" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <ListView fx:id="l" cache="true" cacheHint="SCALE" editable="true" fixedCellSize="0.0" onDragDetected="#vyberSvrsek" orientation="HORIZONTAL" prefHeight="30.0" prefWidth="200.0">
-                     <opaqueInsets>
-                        <Insets bottom="10.0" top="10.0" />
-                     </opaqueInsets>
-                     <HBox.margin>
-                        <Insets />
-                     </HBox.margin>
-                  </ListView>
+                  <HBox fx:id="odh" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <ListView fx:id="l" cache="true" cacheHint="SCALE" editable="true" fixedCellSize="0.0" onDragDetected="#vyberSvrsek" orientation="HORIZONTAL" prefHeight="30.0" prefWidth="200.0">
+                           <opaqueInsets>
+                              <Insets bottom="10.0" top="10.0" />
+                           </opaqueInsets>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </ListView>
+                     </children>
+                  </HBox>
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="10.0" prefWidth="200.0" spacing="10.0" VBox.vgrow="ALWAYS">
@@ -52,14 +54,14 @@
                   </Button>
                </children>
             </HBox>
-            <HBox alignment="CENTER_LEFT" prefHeight="150.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+            <HBox fx:id="rukaOkoli" alignment="CENTER_LEFT" prefHeight="150.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
                <children>
                   <Label contentDisplay="CENTER" text="Ruka">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
                      <font>
-                        <Font size="18.0" />
+                        <Font size="38.0" />
                      </font>
                      <padding>
                         <Insets left="10.0" />

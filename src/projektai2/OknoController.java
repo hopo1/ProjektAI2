@@ -9,17 +9,25 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import static projektai2.PrvniController.i;
 
 
@@ -41,15 +49,13 @@ public class OknoController implements Initializable {
     @FXML
     private HBox odh;
     @FXML
-    private Label protihrac1;
-    @FXML
-    private Label protihrac2;
-    @FXML
-    private Label protihrac3;
-    @FXML
-    private Label protihrac4;
-    @FXML
     private HBox protihrac;
+    @FXML
+    private VBox cele;
+    @FXML
+    private HBox rukaOkoli;
+    @FXML
+    private HBox proKartu;
     @FXML
     private void hraj() {
         if(svrsekVyber){ 
@@ -127,22 +133,31 @@ public class OknoController implements Initializable {
            }
     }
     private Hra h;
-    private ObservableList<Label> list = FXCollections.observableArrayList();
+    private final ObservableList<Label> list = FXCollections.observableArrayList();
+    private final Image imgK=new Image("File:Rub.jpg");
+    private final ImageView imgKV=new ImageView(imgK);
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         h=new Hra(i);
-        
-        /*for(int a=0;a<(5-i);a++){
-            protihrac.getChildren().remove(0);
-        }*/
-        for(int b=0;b<i;b++){
+        for(int qw=0;qw<i;qw++){
             Label lab=new Label();
+            lab.setTextFill(Color.RED);
+            lab.setFont(Font.font("Vardana", 40));
             list.add(lab);
         }
+        cele.setBackground(new Background(new BackgroundFill(Color.LIMEGREEN, CornerRadii.EMPTY, Insets.EMPTY)));
         priprav(false);
-    }    
+        rukaOkoli.setBackground(new Background(new BackgroundFill(Color.ANTIQUEWHITE, CornerRadii.EMPTY, Insets.EMPTY)));
+        priprav(false);
+    }  
+    private void dolBalicek(){ //nedava spravnou velikost
+        double ada=proKartu.getHeight();
+        imgKV.setFitHeight(/*proKartu.getHeight()*/ada);
+        imgKV.setPreserveRatio(true);
+        proKartu.getChildren().add(imgKV);
+    }
 
-    @FXML VBox cele;
     private void vyhra() {
         cele.getChildren().clear();
         Label vyhra=new Label();
