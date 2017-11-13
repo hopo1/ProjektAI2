@@ -3,11 +3,13 @@
 
     -fx-background-color: limegreen;
 }
-.list-view .list-cell  {
+#l.list-view .list-cell  {
     -fx-background-color: limegreen;
+    -fx-background-insets: 0 ;
 
 }
-.list-view .list-cell  {
+#rukaPole.list-view .list-cell  {
     -fx-background-color: antiquewhite;
+    -fx-background-insets: 0 ;
 
 }

@@ -23,7 +23,7 @@
                <children>
                   <HBox fx:id="odh" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0" HBox.hgrow="ALWAYS">
                      <children>
-                        <ListView fx:id="l" cache="true" cacheHint="SCALE" editable="true" fixedCellSize="0.0" onDragDetected="#vyberSvrsek" orientation="HORIZONTAL" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: lime;">
+                        <ListView fx:id="l" cache="true" cacheHint="SCALE" editable="true" fixedCellSize="0.0" onDragDetected="#vyberSvrsek" orientation="HORIZONTAL" prefHeight="30.0" prefWidth="200.0">
                            <opaqueInsets>
                               <Insets bottom="10.0" top="10.0" />
                            </opaqueInsets>
@@ -34,6 +34,9 @@
                      </children>
                   </HBox>
                </children>
+               <padding>
+                  <Insets left="30.0" right="30.0" />
+               </padding>
             </HBox>
             <HBox alignment="CENTER" prefHeight="10.0" prefWidth="200.0" spacing="10.0" VBox.vgrow="ALWAYS">
                <children>
@@ -67,7 +70,7 @@
                         <Insets left="10.0" />
                      </padding>
                   </Label>
-                  <ListView id="rukaList" fx:id="rukaPole" editable="true" nodeOrientation="LEFT_TO_RIGHT" onDragDetected="#hraj" orientation="HORIZONTAL" style="-fx-background-color: antiquewhite;" HBox.hgrow="ALWAYS">
+                  <ListView id="rukaList" fx:id="rukaPole" editable="true" nodeOrientation="LEFT_TO_RIGHT" onDragDetected="#hraj" orientation="HORIZONTAL" style="-: ;" HBox.hgrow="ALWAYS">
                      <HBox.margin>
                         <Insets left="10.0" right="10.0" />
                      </HBox.margin>

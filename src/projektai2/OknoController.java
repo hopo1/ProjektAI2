@@ -6,27 +6,23 @@
 package projektai2;
 
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
+import javafx.beans.InvalidationListener;
+import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import static projektai2.PrvniController.i;
-import javafx.scene.control.Cell;
 
 
 
@@ -57,6 +53,8 @@ public class OknoController implements Initializable {
     private HBox proKartu;
     @FXML
     private Button liznout;
+    @FXML
+    private ListView l;
     @FXML
     private void hraj() {
         if(svrsekVyber){ 
@@ -98,7 +96,8 @@ public class OknoController implements Initializable {
         int velikostRuky=h.hraci.get(h.getHracC()).sizeRuka();
         rukaPole.getItems().clear();
         for(int x=0;x<velikostRuky;x++){
-            rukaPole.getItems().add(h.hraci.get(h.getHracC()).ruka.get(x).getImgv());
+            ImageView imgV=h.hraci.get(h.getHracC()).ruka.get(x).getImgv();
+            rukaPole.getItems().add(imgV);
         }
         rukaPole.refresh();
         kartyHracu(); //pocty karet ostatnich hracu
@@ -109,8 +108,7 @@ public class OknoController implements Initializable {
         if(typ==1)return "Stat";
         return "Liznout";
     }
-    @FXML
-    private ListView l;
+    
     private boolean svrsek() {
         l.getItems().clear();
         for(int i=0;i<4;i++){
@@ -151,13 +149,16 @@ public class OknoController implements Initializable {
             lab.setFont(Font.font("Vardana", 40));
             list.add(lab);
         }
-        priprav(false);  
+        l.setId("l");
+        rukaPole.setId("rukaPole");
+        priprav(false);
+        dolBalicek();
     }  
     private void dolBalicek(){ //nedava spravnou velikost
-        double ada=proKartu.getHeight();
-        imgKV.setFitHeight(/*proKartu.getHeight()*/ada);
+        imgKV.setFitHeight(100);
         imgKV.setPreserveRatio(true);
         proKartu.getChildren().add(imgKV);
+        
     }
 
     private void vyhra() {
