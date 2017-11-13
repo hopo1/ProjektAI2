@@ -17,7 +17,6 @@ public class Hra {
     public int[] dalsiKarta=new int[3];
     public BalicekB balB=new BalicekB();
     public BalicekA balA=new BalicekA(balB);
-    public String druhAkce="Liznout";
     public Svrsek svrsek=new Svrsek();
     
     public Hra(int pocet){

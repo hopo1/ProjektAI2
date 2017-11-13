@@ -1,0 +1,13 @@
+
+.background {
+
+    -fx-background-color: limegreen;
+}
+.list-view .list-cell  {
+    -fx-background-color: limegreen;
+
+}
+.list-view .list-cell  {
+    -fx-background-color: antiquewhite;
+
+}

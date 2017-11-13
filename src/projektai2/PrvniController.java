@@ -37,6 +37,7 @@ public class PrvniController implements Initializable {
         Stage stage = new Stage();
         stage.setTitle("Hra");
         stage.setScene(scene);
+        scene.getStylesheets().add(getClass().getResource("Barvicky.css").toExternalForm());
         stage.show();
         
     } catch (IOException e) {

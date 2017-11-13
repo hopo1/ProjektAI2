@@ -6,10 +6,8 @@
 package projektai2;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -22,13 +20,14 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import static projektai2.PrvniController.i;
+import javafx.scene.control.Cell;
+
 
 
 /**
@@ -57,6 +56,8 @@ public class OknoController implements Initializable {
     @FXML
     private HBox proKartu;
     @FXML
+    private Button liznout;
+    @FXML
     private void hraj() {
         if(svrsekVyber){ 
         int vyber=rukaPole.getSelectionModel().getSelectedIndex();
@@ -81,8 +82,8 @@ public class OknoController implements Initializable {
     private void handleLiznout(){
         if(svrsekVyber){
         h.hraci.get(h.getHracC()).lizniSi(h.dalsiKarta);
-        
-        priprav(false);
+        odh.getChildren().remove(0);
+        priprav(true);
     }
     }
     private void priprav(boolean b){
@@ -100,9 +101,13 @@ public class OknoController implements Initializable {
             rukaPole.getItems().add(h.hraci.get(h.getHracC()).ruka.get(x).getImgv());
         }
         rukaPole.refresh();
-        //pocty karet ostatnich hracu
-        kartyHracu();
-        //liznout.setText(h.druhAkce);   nevim co to sakra je ale mozna to ma neco delat
+        kartyHracu(); //pocty karet ostatnich hracu
+        liznout.setText(druhAkce());
+    }
+    private String druhAkce(){
+        int typ=h.dalsiKarta[2];
+        if(typ==1)return "Stat";
+        return "Liznout";
     }
     @FXML
     private ListView l;
@@ -146,10 +151,7 @@ public class OknoController implements Initializable {
             lab.setFont(Font.font("Vardana", 40));
             list.add(lab);
         }
-        cele.setBackground(new Background(new BackgroundFill(Color.LIMEGREEN, CornerRadii.EMPTY, Insets.EMPTY)));
-        priprav(false);
-        rukaOkoli.setBackground(new Background(new BackgroundFill(Color.ANTIQUEWHITE, CornerRadii.EMPTY, Insets.EMPTY)));
-        priprav(false);
+        priprav(false);  
     }  
     private void dolBalicek(){ //nedava spravnou velikost
         double ada=proKartu.getHeight();
