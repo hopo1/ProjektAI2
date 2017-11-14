@@ -136,7 +136,7 @@ public class OknoController implements Initializable {
            }
     }
     private Hra h;
-    private final ObservableList<Label> list = FXCollections.observableArrayList();
+    private final ObservableList<VBox> list = FXCollections.observableArrayList();
     private final Image imgK=new Image("File:Rub.jpg");
     private final ImageView imgKV=new ImageView(imgK);
 
@@ -144,10 +144,7 @@ public class OknoController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         h=new Hra(i);
         for(int qw=0;qw<i;qw++){
-            Label lab=new Label();
-            lab.setTextFill(Color.RED);
-            lab.setFont(Font.font("Vardana", 40));
-            list.add(lab);
+            list.add(poleProtihrac());
         }
         l.setId("l");
         rukaPole.setId("rukaPole");
@@ -171,9 +168,6 @@ public class OknoController implements Initializable {
         imgv.setFitHeight(vyska);
         imgv.setFitWidth(sirka);
         vyhra.setText("Vyhral hrac "+h.getHracC());
-        /*int scale=2;
-        imgv.setScaleY(scale);
-        imgv.setScaleX(scale);*/
         
         cele.getChildren().addAll(imgv,vyhra);
     }
@@ -184,13 +178,27 @@ public class OknoController implements Initializable {
             if(hrac>i-1){
                 hrac-=i;
             }
-            String s=h.hraci.get(hrac).toString();
-            int x=a-1;
-            list.get(list.size()-a-1).setText(s);
+            Label lab=new Label();
+            lab.setText(h.hraci.get(hrac).toString());
+            list.get(list.size()-a-1).getChildren().remove(0);
+            list.get(list.size()-a-1).getChildren().add(lab);
         }
         
         protihrac.getChildren().clear();
         protihrac.getChildren().addAll(list);
+    }
+    private final Image protihracI=new Image("File:Protihrac.png");
+    private final ImageView protihracV=new ImageView(protihracI);
+
+    private VBox poleProtihrac() {
+        VBox v=new VBox();
+        Label labl=new Label();
+        v.setPrefHeight(50);
+        protihracV.setFitHeight(20);
+        protihracV.setPreserveRatio(true);
+        v.getChildren().add(protihracV);
+        v.getChildren().add(labl);
+        return v;
     }
     
 

@@ -14,7 +14,7 @@
    <children>
       <VBox fx:id="cele" alignment="CENTER" layoutX="282.0" layoutY="126.0" spacing="10.0" style="-fx-background-color: limegreen;" styleClass=".background" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <HBox fx:id="protihrac" alignment="CENTER" blendMode="SRC_ATOP" opacity="0.5" prefHeight="100.0" prefWidth="200.0" spacing="30.0" VBox.vgrow="ALWAYS">
+            <HBox fx:id="protihrac" alignment="CENTER" blendMode="SRC_ATOP" minHeight="100.0" opacity="0.5" spacing="30.0" VBox.vgrow="ALWAYS">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
