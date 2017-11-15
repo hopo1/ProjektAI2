@@ -13,6 +13,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -143,7 +144,7 @@ public class OknoController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         h=new Hra(i);
-        for(int qw=0;qw<i;qw++){
+        for(int qw=0;qw<(i-1);qw++){
             list.add(poleProtihrac());
         }
         l.setId("l");
@@ -179,25 +180,33 @@ public class OknoController implements Initializable {
                 hrac-=i;
             }
             Label lab=new Label();
-            lab.setText(h.hraci.get(hrac).toString());
-            list.get(list.size()-a-1).getChildren().remove(0);
-            list.get(list.size()-a-1).getChildren().add(lab);
+            lab.setId("pro");
+            Label lab2=new Label();
+            lab2.setId("pro");
+            lab2.setText("Hrac c.: "+String.valueOf(hrac));
+            lab.setText("Karet:"+h.hraci.get(hrac).toString()); 
+            list.get(list.size()-a).getChildren().remove(1);
+            list.get(list.size()-a).getChildren().remove(1);
+            list.get(list.size()-a).getChildren().addAll(lab2,lab);
         }
         
         protihrac.getChildren().clear();
         protihrac.getChildren().addAll(list);
     }
     private final Image protihracI=new Image("File:Protihrac.png");
-    private final ImageView protihracV=new ImageView(protihracI);
+    
 
     private VBox poleProtihrac() {
         VBox v=new VBox();
         Label labl=new Label();
+        Label lab2=new Label();
         v.setPrefHeight(50);
+        ImageView protihracV=new ImageView(protihracI);
         protihracV.setFitHeight(20);
         protihracV.setPreserveRatio(true);
         v.getChildren().add(protihracV);
-        v.getChildren().add(labl);
+        v.getChildren().addAll(labl,lab2);
+        v.setAlignment(Pos.CENTER);
         return v;
     }
     

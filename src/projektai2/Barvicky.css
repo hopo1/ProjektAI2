@@ -13,3 +13,7 @@
     -fx-background-insets: 0 ;
 
 }
+#pro.label{
+  -fx-font: 18px "Serif";
+  -fx-text-fill: red;
+}
