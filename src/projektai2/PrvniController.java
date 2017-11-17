@@ -12,7 +12,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 /**
@@ -25,11 +27,37 @@ public class PrvniController implements Initializable {
     /**
      * Initializes the controller class.
      */
+    private final String[] hraci={"Clovek"};
     @FXML
-    public ChoiceBox menu;
+    private VBox vyber;
+    @FXML
+    private Button pridej;
+    @FXML
+    private Button odeber;
+    @FXML
+    private void handleOdeber(){
+        int last=vyber.getChildren().size()-1;
+        if(last>1){
+        vyber.getChildren().remove(last);
+        }
+    }
+    @FXML
+    private void handlePridej(){
+        int hracu=vyber.getChildren().size();
+        if(hracu<5){
+            vyber.getChildren().add(vyber());
+        }
+    }
+    private ChoiceBox vyber(){
+        ChoiceBox b=new ChoiceBox();
+        b.getItems().addAll((Object[]) hraci);
+        b.getSelectionModel().selectFirst();
+        return b;
+    }
     @FXML
         public void handle() {
-        i=menu.getSelectionModel().getSelectedIndex()+2;
+        i=vyber.getChildren().size();
+        i2=zjisti();
         try {
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setLocation(getClass().getResource("Okno.fxml"));
@@ -45,12 +73,23 @@ public class PrvniController implements Initializable {
     }
         
 }
-    public static int i=0;
+    public static int i;
+    public static int[] i2;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        menu.getItems().addAll("2", "3","4","5");
-        menu.getSelectionModel().select(0);
+        for(int q=0;q<2;q++){
+            vyber.getChildren().add(vyber());
+        }
     }    
+
+    private int[] zjisti() {
+        int[] pole=new int[i];
+        for(int q=0;q<i;q++){
+            ChoiceBox b=(ChoiceBox) vyber.getChildren().get(q);
+            pole[q]=b.getSelectionModel().getSelectedIndex();
+        }
+        return pole;
+    }
     
 }

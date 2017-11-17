@@ -7,8 +7,6 @@ package projektai2;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.beans.InvalidationListener;
-import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -21,9 +19,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import static projektai2.PrvniController.i;
+import static projektai2.PrvniController.i2;
 
 
 
@@ -38,6 +34,7 @@ public class OknoController implements Initializable {
      * Initializes the controller class.
      */
     private boolean svrsekVyber=true;
+    private int pocetHracu;
     @FXML
     private ListView rukaPole;
     @FXML
@@ -103,6 +100,10 @@ public class OknoController implements Initializable {
         rukaPole.refresh();
         kartyHracu(); //pocty karet ostatnich hracu
         liznout.setText(druhAkce());
+        if(h.hraci.get(h.getHracC()).getClass()!=Hrac.class){
+        boolean x=h.hraci.get(h.getHracC()).aiFce();
+        priprav(x);
+    }
     }
     private String druhAkce(){
         int typ=h.dalsiKarta[2];
@@ -143,8 +144,9 @@ public class OknoController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        h=new Hra(i);
-        for(int qw=0;qw<(i-1);qw++){
+        pocetHracu=i2.length;
+        h=new Hra(i2);
+        for(int qw=0;qw<(pocetHracu-1);qw++){
             list.add(poleProtihrac());
         }
         l.setId("l");
@@ -174,10 +176,10 @@ public class OknoController implements Initializable {
     }
     private void kartyHracu(){
         int hraje=h.getHracC();
-        for(int a=1;a<i;a++){
+        for(int a=1;a<pocetHracu;a++){
             int hrac=hraje+a;
-            if(hrac>i-1){
-                hrac-=i;
+            if(hrac>pocetHracu-1){
+                hrac-=pocetHracu;
             }
             Label lab=new Label();
             lab.setId("pro");

@@ -19,8 +19,8 @@ public class Hra {
     public BalicekA balA=new BalicekA(balB);
     public Svrsek svrsek=new Svrsek();
     
-    public Hra(int pocet){
-        for(int i=0;i<pocet;i++){
+    public Hra(int[] i2){
+        for(int i=0;i<i2.length;i++){
             Hrac h=new Hrac(balA,balB);
             hraci.add(h);
         }

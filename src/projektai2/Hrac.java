@@ -59,7 +59,7 @@ public class Hrac {
         k =  bal.lizniSi(true);
         ruka.add(k);
     }
-    private void specEfekt(Karta karta,int[] dalsiKarta){
+    protected void specEfekt(Karta karta,int[] dalsiKarta){
         dalsiKarta[1]=karta.getTyp();
         switch (dalsiKarta[1]) {
             case 0: //sedmicka
@@ -81,15 +81,15 @@ public class Hrac {
     /**
      * Hrac zahraje kartu s indexem i ze sve ruky
      * @param i pozice karty na ruce
-     * @param odhBalicek odhayovaci balicek
+     * @param dalsiKarta
      */
-    private void zahraj(int i,int[] dalsiKarta){
+    protected void zahraj(int i,int[] dalsiKarta){
         specEfekt(ruka.get(i),dalsiKarta);
         balB.pridej(ruka.get(i));
         ruka.remove(i);
     }
     private boolean pravidla(Karta k,int[] dalsiKarta){
-        boolean b=false;
+        boolean b;
         b=((k.getBarva()==dalsiKarta[0])||(k.getTyp()==dalsiKarta[1]));
         
         //pro svrska
@@ -105,5 +105,9 @@ public class Hrac {
     @Override
     public String toString(){
         return String.valueOf(ruka.size());
+    }
+
+    public boolean aiFce() {
+        return false;
     }
 }

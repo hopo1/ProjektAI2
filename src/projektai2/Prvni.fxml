@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
@@ -12,19 +13,34 @@
    <children>
       <VBox alignment="CENTER" layoutX="250.0" layoutY="106.0" prefHeight="200.0" prefWidth="100.0" spacing="20.0" styleClass="background" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label text="Hra Prsi" />
-            <Button mnemonicParsing="false" onAction="#handle" text="Hrat" />
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="20.0">
+               <children>
+                  <Label text="Hra Prsi" textFill="#2222bc">
+                     <font>
+                        <Font size="32.0" />
+                     </font>
+                  </Label>
+                  <Button mnemonicParsing="false" onAction="#handle" text="Hrat" />
+               </children>
+            </VBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0" VBox.vgrow="ALWAYS">
                <children>
                   <Label text="Pocet Hracu:">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <ChoiceBox fx:id="menu" blendMode="DARKEN" prefWidth="150.0">
-                     <effect>
-                        <Glow />
-                     </effect></ChoiceBox>
+                  <VBox fx:id="vyber" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0">
+                     <padding>
+                        <Insets bottom="10.0" top="10.0" />
+                     </padding>
+                  </VBox>
+                  <VBox alignment="CENTER" spacing="15.0">
+                     <children>
+                        <Button fx:id="pridej" mnemonicParsing="false" onAction="#handlePridej" text="Pridej" />
+                        <Button fx:id="odeber" mnemonicParsing="false" onAction="#handleOdeber" text="Odeber" />
+                     </children>
+                  </VBox>
                </children>
             </HBox>
          </children>
