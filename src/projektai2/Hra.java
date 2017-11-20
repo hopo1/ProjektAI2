@@ -20,10 +20,11 @@ public class Hra {
     public Svrsek svrsek=new Svrsek();
     
     public Hra(int[] i2){
-        for(int i=0;i<i2.length;i++){
-            Hrac h=new Hrac(balA,balB);
-            hraci.add(h);
-        }
+        vytvorHrace(i2);
+//        for(int i=0;i<i2.length;i++){
+//            Hrac h=new Hrac(balA,balB);
+//            hraci.add(h);
+//        }
         balB.pridej(balA.lizniSi(true));
         dalsiKarta[0]=balB.posledni().getBarva();
         dalsiKarta[1]=balB.posledni().getTyp();
@@ -39,5 +40,20 @@ public class Hra {
      */
     public int getHracC() {
         return hracC;
+    }
+
+    private void vytvorHrace(int[] i2) {
+        for(int i=0;i<i2.length;i++){
+            switch(i2[i]){
+                case 0 :
+                    Hrac hr=new Hrac(balA,balB);
+                    hraci.add(hr);
+                    break;
+                case 1:
+                    PcHrac pcHr=new PcHrac(balA,balB);
+                    hraci.add(pcHr);
+            }
+            
+        }
     }
 }

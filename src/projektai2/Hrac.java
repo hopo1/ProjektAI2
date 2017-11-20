@@ -12,8 +12,8 @@ import java.util.ArrayList;
  * @author david_5i3asud
  */
 public class Hrac {
-    private BalicekA bal;
-    private BalicekB balB;
+    protected BalicekA bal;
+    protected BalicekB balB;
     public ArrayList<Karta> ruka=new ArrayList<>();
     public Hrac(BalicekA bal,BalicekB balB){
         this.bal=bal;
@@ -63,8 +63,7 @@ public class Hrac {
         dalsiKarta[1]=karta.getTyp();
         switch (dalsiKarta[1]) {
             case 0: //sedmicka
-                if(dalsiKarta[2]==2)dalsiKarta[2]+=2;
-                else dalsiKarta[2]=2;
+                dalsiKarta[2]+=2;
                 dalsiKarta[0]=-1;
                 break;
             case 7: //eso 
@@ -88,7 +87,7 @@ public class Hrac {
         balB.pridej(ruka.get(i));
         ruka.remove(i);
     }
-    private boolean pravidla(Karta k,int[] dalsiKarta){
+    protected boolean pravidla(Karta k,int[] dalsiKarta){
         boolean b;
         b=((k.getBarva()==dalsiKarta[0])||(k.getTyp()==dalsiKarta[1]));
         
@@ -107,7 +106,8 @@ public class Hrac {
         return String.valueOf(ruka.size());
     }
 
-    public boolean aiFce() {
-        return false;
+    public boolean[] aiFce(Hra h) {
+        boolean[] a=new boolean[0];
+        return a;
     }
 }

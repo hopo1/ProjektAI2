@@ -77,6 +77,9 @@ catch (Exception e)
         if(bal.isEmpty()){
             otoc();
         }
+        if(bal.isEmpty()){
+            return null;
+        }
         Karta k=bal.get(0);
         if(a){
         bal.remove(0);}

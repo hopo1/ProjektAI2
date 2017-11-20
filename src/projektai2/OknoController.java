@@ -84,6 +84,7 @@ public class OknoController implements Initializable {
     }
     private void priprav(boolean b){
         h.dalsihrac();
+        if(h.hraci.get(h.getHracC()).getClass()==Hrac.class){
         cisloH.setText(String.valueOf(h.getHracC()));
         //posledni karta
         if(!b){
@@ -100,10 +101,19 @@ public class OknoController implements Initializable {
         rukaPole.refresh();
         kartyHracu(); //pocty karet ostatnich hracu
         liznout.setText(druhAkce());
-        if(h.hraci.get(h.getHracC()).getClass()!=Hrac.class){
-        boolean x=h.hraci.get(h.getHracC()).aiFce();
-        priprav(x);
+        {
     }
+        }
+        else{
+           boolean[] x=h.hraci.get(h.getHracC()).aiFce(h);
+           if(x[2]){
+               vyhra();
+           }
+           if(x[1]){
+               odh.getChildren().add(h.svrsek.obrazky.get(h.dalsiKarta[0]));
+           }
+           priprav(x[1]);   
+        }
     }
     private String druhAkce(){
         int typ=h.dalsiKarta[2];

@@ -14,10 +14,24 @@ public class PcHrac extends Hrac {
     public PcHrac(BalicekA bal, BalicekB balB) {
         super(bal, balB);
     }
-    // vraci false kdyz uspesne zahraje kartu jinak true
+    // vraci true/false podle prepisu pro svrska
     @Override
-    public boolean aiFce(){
-        
-        return true;
+    public boolean[] aiFce(Hra h){
+        boolean[] b={false,false,false}; //jestli hral kartu , jestli hral svrska , jestli vyhral
+        int karet=ruka.size();
+        int karet2=-1;
+        for(int i=0;i<karet;i++){
+            karet2=hraj(i,h.dalsiKarta);
+            if(karet!=karet2){
+                b[0]=true;
+                i=karet;
+            }
+        }
+        b[2]=karet2==0;
+        if(!b[0]){
+        lizniSi(h.dalsiKarta);    
+        }
+        if(h.dalsiKarta[1]==5) b[1]=true;
+        return b;
     }
 }
