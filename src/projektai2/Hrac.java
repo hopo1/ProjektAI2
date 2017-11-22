@@ -100,7 +100,7 @@ public class Hrac {
         return b;
     
     }
-    private int pocetKaret(){
+    protected int pocetKaret(){
         return ruka.size();
     }
     @Override

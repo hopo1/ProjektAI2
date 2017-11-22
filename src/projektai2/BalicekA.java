@@ -6,6 +6,7 @@
 package projektai2;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -38,7 +39,7 @@ public class BalicekA {
             int a=Integer.parseInt(split[0]);
             int b=Integer.parseInt(split[1]);
             String pathI;
-                pathI = "file:"+slozka+"\\image_part_"+String.format("%03d", i)+".jpg";
+                pathI = "file:"+slozka+File.separatorChar+"image_part_"+String.format("%03d", i)+".jpg";
             Image img=new Image(pathI);
             Karta k=new Karta(b,a,img);
             bal.add(k);

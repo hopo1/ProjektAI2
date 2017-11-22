@@ -31,7 +31,6 @@ public class PcHrac extends Hrac {
         b[2]=karet2==0;
         if(!b[0]){
         lizniSi(h.dalsiKarta);
-        b[1]=true;
         b[3]=true;
         }
         

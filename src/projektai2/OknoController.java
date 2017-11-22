@@ -137,10 +137,7 @@ public class OknoController implements Initializable {
                odh.getChildren().add(imgVa);
                
            }
-           if(x[3]){
-               odh.getChildren().remove(0);
-           }
-           priprav(x[1]);   
+           priprav(x[1]||x[3]);   
         }
            }
     }
@@ -211,7 +208,7 @@ public class OknoController implements Initializable {
         imgv.setFitHeight(vyska);
         imgv.setFitWidth(sirka);
         vyhra.setText("Vyhral hrac "+h.getHracC());
-        System.out.println("Vyhral hrac " + h.getHracC());
+        System.out.println("Vyhral hrac " + h.getHracC()+" "+ h.hraci.get(h.getHracC()).getClass());
         cele.getChildren().addAll(imgv,vyhra);
     }
     private void kartyHracu(){
