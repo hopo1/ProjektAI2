@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class Hra {
     public ArrayList<Hrac> hraci=new ArrayList<>();
     public int f;
-    private int hracC;
+    private int hracC=-1;
     public int[] dalsiKarta=new int[3];
     public BalicekB balB=new BalicekB();
     public BalicekA balA=new BalicekA(balB);

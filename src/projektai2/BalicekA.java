@@ -65,11 +65,7 @@ catch (Exception e)
     }
     private void otoc() {
         ArrayList<Karta> odhBal= balB.proMichni();
-        int a=odhBal.size();
-        for(int i=0;i<a;i++){
-            bal.add(odhBal.get(0));
-            
-        }
+        bal.addAll(odhBal);
         System.out.println("Otaceni");
         michej();
     }

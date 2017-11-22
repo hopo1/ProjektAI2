@@ -82,14 +82,33 @@ public class OknoController implements Initializable {
         priprav(true);
     }
     }
+    private final int[] vypis=new int[2];
+    private boolean prvni=false;
+    private void proVypis(){
+        if(prvni){
+        System.out.print(h.getHracC()+" ");}
+        else{
+            prvni=true;
+        }
+        int[] vypis2=vypis.clone();
+        vypis[0]=h.balB.posledni().getBarva();
+        vypis[1]=h.balB.posledni().getTyp();
+        if(vypis[0]!=vypis2[0]||vypis[1]!=vypis2[1]){
+        System.out.println(h.balB.posledni().toString());
+        }
+        else{
+            System.out.println("Liznul si");
+        }
+    }
     private void priprav(boolean b){
+        proVypis();
+        if(!b){
+            odh.getChildren().clear();
+        }
         h.dalsihrac();
         if(h.hraci.get(h.getHracC()).getClass()==Hrac.class){
         cisloH.setText(String.valueOf(h.getHracC()));
         //posledni karta
-        if(!b){
-            odh.getChildren().clear();
-        }
         odh.getChildren().add(0, h.balB.posledni().getImgv());
         //ruka
         int velikostRuky=h.hraci.get(h.getHracC()).sizeRuka();
@@ -109,11 +128,21 @@ public class OknoController implements Initializable {
            if(x[2]){
                vyhra();
            }
+               else{
            if(x[1]){
-               odh.getChildren().add(h.svrsek.obrazky.get(h.dalsiKarta[0]));
+               odh.getChildren().clear();
+               ImageView imgVa=h.svrsek.obrazky.get(h.dalsiKarta[0]);
+               imgVa.setFitWidth(30);
+               imgVa.setFitHeight(30);
+               odh.getChildren().add(imgVa);
+               
+           }
+           if(x[3]){
+               odh.getChildren().remove(0);
            }
            priprav(x[1]);   
         }
+           }
     }
     private String druhAkce(){
         int typ=h.dalsiKarta[2];
@@ -121,7 +150,7 @@ public class OknoController implements Initializable {
         return "Liznout";
     }
     
-    private boolean svrsek() {
+    private void svrsek() {
         l.getItems().clear();
         for(int i=0;i<4;i++){
             ImageView imgv=h.svrsek.obrazky.get(i);
@@ -134,7 +163,6 @@ public class OknoController implements Initializable {
         odh.getChildren().add(l);
         svrsekVyber=false;
         
-        return true;
     }
     @FXML
     private void vyberSvrsek(){
@@ -154,6 +182,7 @@ public class OknoController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        System.out.println("---------------------------------\nNova hra");
         pocetHracu=i2.length;
         h=new Hra(i2);
         for(int qw=0;qw<(pocetHracu-1);qw++){
@@ -164,7 +193,7 @@ public class OknoController implements Initializable {
         priprav(false);
         dolBalicek();
     }  
-    private void dolBalicek(){ //nedava spravnou velikost
+    private void dolBalicek(){ 
         imgKV.setFitHeight(100);
         imgKV.setPreserveRatio(true);
         proKartu.getChildren().add(imgKV);
@@ -172,6 +201,7 @@ public class OknoController implements Initializable {
     }
 
     private void vyhra() {
+        proVypis();
         cele.getChildren().clear();
         Label vyhra=new Label();
         Image img=new Image("File:vyhra.jpg");
@@ -181,7 +211,7 @@ public class OknoController implements Initializable {
         imgv.setFitHeight(vyska);
         imgv.setFitWidth(sirka);
         vyhra.setText("Vyhral hrac "+h.getHracC());
-        
+        System.out.println("Vyhral hrac " + h.getHracC());
         cele.getChildren().addAll(imgv,vyhra);
     }
     private void kartyHracu(){

@@ -26,7 +26,7 @@ public class Hrac {
         return ruka.size();
     }
     public int hraj(int vyber,int[] dalsiKarta){
-        System.out.println("hraj");
+       //System.out.println("hraj");
             if(pravidla(ruka.get(vyber),dalsiKarta)){
             zahraj(vyber,dalsiKarta);
             
@@ -57,7 +57,9 @@ public class Hrac {
     public final void lizniSi(){
         Karta k;
         k =  bal.lizniSi(true);
+        if(k != null){
         ruka.add(k);
+        }
     }
     protected void specEfekt(Karta karta,int[] dalsiKarta){
         dalsiKarta[1]=karta.getTyp();
