@@ -7,6 +7,8 @@ package projektai2;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -198,6 +200,7 @@ public class OknoController implements Initializable {
     }
 
     private void vyhra() {
+        vypisVyhry();
         proVypis();
         cele.getChildren().clear();
         Label vyhra=new Label();
@@ -210,6 +213,12 @@ public class OknoController implements Initializable {
         vyhra.setText("Vyhral hrac "+h.getHracC());
         System.out.println("Vyhral hrac " + h.getHracC()+" "+ h.hraci.get(h.getHracC()).getClass());
         cele.getChildren().addAll(imgv,vyhra);
+        try {
+            System.out.wait(10000);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(OknoController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }
     private void kartyHracu(){
         int hraje=h.getHracC();
@@ -248,6 +257,19 @@ public class OknoController implements Initializable {
         v.setAlignment(Pos.CENTER);
         return v;
     }
+
+    private void vypisVyhry() {
+        Class s=h.hraci.get(h.getHracC()).getClass();
+        if(s==Hrac.class){
+            ProjektAI2.vyhry[0]+=1;
+        }
+        if(s==PcHrac.class){
+            ProjektAI2.vyhry[1]+=1;
+        }
+        if(s==PCHrac_2.class){
+            ProjektAI2.vyhry[2]+=1;
+        }
+         }
     
 
    

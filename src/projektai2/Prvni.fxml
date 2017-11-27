@@ -41,6 +41,7 @@
                         <Button fx:id="odeber" mnemonicParsing="false" onAction="#handleOdeber" text="Odeber" />
                      </children>
                   </VBox>
+                  <Button mnemonicParsing="false" onAction="#zk" text="Zk" />
                </children>
             </HBox>
          </children>

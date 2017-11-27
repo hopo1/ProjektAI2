@@ -7,6 +7,7 @@ package projektai2;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -54,6 +55,7 @@ public class PrvniController implements Initializable {
         b.getSelectionModel().selectFirst();
         return b;
     }
+    private ArrayList<Stage> ara=new ArrayList<>();
     @FXML
         public void handle() {
         i=vyber.getChildren().size();
@@ -67,12 +69,21 @@ public class PrvniController implements Initializable {
         stage.setScene(scene);
         scene.getStylesheets().add(getClass().getResource("Barvicky.css").toExternalForm());
         stage.show();
-        
+        ara.add(stage);
     } catch (IOException e) {
         System.err.println("Nejde otevrit");
     }
-        
-}
+        }
+        @FXML
+        public void zk(){
+            int hodne=5000;
+            for(int qw=0;qw<hodne;qw++){
+            handle();
+        }
+            /*for(int qw=0;qw<hodne;qw++){
+            ara.get(0).hide();
+        }*/
+        }
     public static int i;
     public static int[] i2;
     
