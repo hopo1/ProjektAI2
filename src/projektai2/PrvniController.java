@@ -27,7 +27,7 @@ public class PrvniController implements Initializable {
     /**
      * Initializes the controller class.
      */
-    private final String[] hraci={"Clovek","PcHrac"};
+    private final String[] hraci={"Clovek","PcHrac","PcHrac_2"};
     @FXML
     private VBox vyber;
     @FXML
