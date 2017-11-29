@@ -213,11 +213,11 @@ public class OknoController implements Initializable {
         vyhra.setText("Vyhral hrac "+h.getHracC());
         System.out.println("Vyhral hrac " + h.getHracC()+" "+ h.hraci.get(h.getHracC()).getClass());
         cele.getChildren().addAll(imgv,vyhra);
-        try {
-            System.out.wait(10000);
-        } catch (InterruptedException ex) {
-            Logger.getLogger(OknoController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+//        try {
+//            System.out.wait(10000);
+//        } catch (InterruptedException ex) {
+//            Logger.getLogger(OknoController.class.getName()).log(Level.SEVERE, null, ex);
+//        }
         
     }
     private void kartyHracu(){
@@ -266,7 +266,7 @@ public class OknoController implements Initializable {
         if(s==PcHrac.class){
             ProjektAI2.vyhry[1]+=1;
         }
-        if(s==PCHrac_2.class){
+        if(s==PcHrac_2.class){
             ProjektAI2.vyhry[2]+=1;
         }
          }

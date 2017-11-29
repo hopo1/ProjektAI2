@@ -109,7 +109,6 @@ public class Hrac {
     }
 
     public boolean[] aiFce(Hra h) {
-        boolean[] a=new boolean[0];
-        return a;
+        return null;
     }
 }

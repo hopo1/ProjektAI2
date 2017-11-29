@@ -54,8 +54,12 @@ public class Hra {
                     hraci.add(pcHr);
                     break;
                 case 2:
-                    PCHrac_2 pcHr2= new PCHrac_2(balA,balB);
+                    PcHrac_2 pcHr2= new PcHrac_2(balA,balB);
                     hraci.add(pcHr2);
+                    break;
+                case 3:
+                    PcHrac_3 pcHr3= new PcHrac_3(balA,balB);
+                    hraci.add(pcHr3);
             }
             
         }

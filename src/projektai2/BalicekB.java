@@ -29,4 +29,12 @@ public class BalicekB {
     public void pridej(Karta k){
         balB.add(k);
     }
+    public int[][] zahraneK(){
+        int[][] karty= new int[balB.size()][2];
+        for(int i=0;i<balB.size();i++){
+            karty[i][0]=balB.get(i).getBarva();
+            karty[i][1]=balB.get(i).getTyp();
+        }
+        return karty;
+    }
 }

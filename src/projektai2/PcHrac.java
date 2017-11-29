@@ -14,7 +14,6 @@ public class PcHrac extends Hrac {
     public PcHrac(BalicekA bal, BalicekB balB) {
         super(bal, balB);
     }
-    // vraci true/false podle prepisu pro svrska
     @Override
     public boolean[] aiFce(Hra h){
         boolean[] b={false,false,false,false}; //jestli hral kartu , jestli hral svrska , jestli vyhral, jestli si liznul
