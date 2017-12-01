@@ -21,6 +21,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import static projektai2.PrvniController.i2;
 
 
@@ -213,12 +214,10 @@ public class OknoController implements Initializable {
         vyhra.setText("Vyhral hrac "+h.getHracC());
         System.out.println("Vyhral hrac " + h.getHracC()+" "+ h.hraci.get(h.getHracC()).getClass());
         cele.getChildren().addAll(imgv,vyhra);
-//        try {
-//            System.out.wait(10000);
-//        } catch (InterruptedException ex) {
-//            Logger.getLogger(OknoController.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-        
+        if(PrvniController.zkouska){
+        Stage st= (Stage) cele.getScene().getWindow();
+        st.hide();
+        }
     }
     private void kartyHracu(){
         int hraje=h.getHracC();
@@ -263,11 +262,14 @@ public class OknoController implements Initializable {
         if(s==Hrac.class){
             ProjektAI2.vyhry[0]+=1;
         }
-        if(s==PcHrac.class){
+        else if(s==PcHrac.class){
             ProjektAI2.vyhry[1]+=1;
         }
-        if(s==PcHrac_2.class){
+        else if(s==PcHrac_2.class){
             ProjektAI2.vyhry[2]+=1;
+        }
+        else if(s==PcHrac_3.class){
+            ProjektAI2.vyhry[3]+=1;
         }
          }
     

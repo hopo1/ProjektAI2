@@ -31,6 +31,7 @@ public class PrvniController implements Initializable {
      * Initializes the controller class.
      */
     private final String[] hraci={"Clovek","PcHrac","PcHrac_2","PcHrac_3"};
+   // public static boolean zkouska=false;
     @FXML
     private VBox vyber;
     @FXML
@@ -57,7 +58,6 @@ public class PrvniController implements Initializable {
         b.getSelectionModel().selectFirst();
         return b;
     }
-    private ArrayList<Stage> ara=new ArrayList<>();
     @FXML
         public void handle() {
         i=vyber.getChildren().size();
@@ -70,21 +70,21 @@ public class PrvniController implements Initializable {
         stage.setTitle("Hra");
         stage.setScene(scene);
         scene.getStylesheets().add(getClass().getResource("Barvicky.css").toExternalForm());
-        stage.show();
-        ara.add(stage);
+        stage.showAndWait();
     }   catch (IOException ex) { 
-            Logger.getLogger(PrvniController.class.getName()).log(Level.SEVERE, null, ex);
+           // Logger.getLogger(PrvniController.class.getName()).log(Level.SEVERE, null, ex);
         } 
         }
+        public static boolean zkouska=false;
         @FXML
         public void zk(){
-            int hodne=10;
+            zkouska=true;
+            int hodne=100;
             for(int qw=0;qw<hodne;qw++){
-            handle();
+            handle();  
+
         }
-            /*for(int qw=0;qw<hodne;qw++){
-            ara.get(0).hide();
-        }*/
+            zkouska=false;
         }
     public static int i;
     public static int[] i2;

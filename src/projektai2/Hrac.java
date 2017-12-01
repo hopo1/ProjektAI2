@@ -111,4 +111,10 @@ public class Hrac {
     public boolean[] aiFce(Hra h) {
         return null;
     }
+    protected void vypis(){
+        for(int i=0;i<ruka.size();i++){
+            System.out.print(i+" "+ruka.get(i).toString()+", ");
+    }
+        System.out.println();
+}
 }

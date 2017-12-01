@@ -21,10 +21,6 @@ public class Hra {
     
     public Hra(int[] i2){
         vytvorHrace(i2);
-//        for(int i=0;i<i2.length;i++){
-//            Hrac h=new Hrac(balA,balB);
-//            hraci.add(h);
-//        }
         balB.pridej(balA.lizniSi(true));
         dalsiKarta[0]=balB.posledni().getBarva();
         dalsiKarta[1]=balB.posledni().getTyp();

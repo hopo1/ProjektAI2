@@ -16,12 +16,13 @@ public class PcHrac_3 extends PcHrac_2{
     }
     @Override
     public boolean[] aiFce(Hra h){
+       // vypis();
     boolean[] b={false,false,false,false}; //jestli hral kartu , jestli hral svrska , jestli vyhral, jestli si liznul
     int karet=ruka.size();
     int karet2=-1;
     //obsah
     
-    int[] hratelneKarty= hratelneKarty(h);
+    boolean[] hratelneKarty= hratelneKarty(h);
     int karta=vybratKartu(hratelneKarty, h);
     if(karta!=-1){
     karet2=hraj(karta,h.dalsiKarta);
@@ -29,13 +30,14 @@ public class PcHrac_3 extends PcHrac_2{
     }
     else{
         for(int i=0;i<karet;i++){
-            if(ruka.get(i).getTyp()==5){
+            if(ruka.get(i).getTyp()==5&&h.dalsiKarta[2]==0){
             karet2=hraj(i,h.dalsiKarta);
             b[0]=true;
             b[1]=true;
+            i=karet;
             }
             }
-        if(b[0]){
+        if(!b[0]){
         lizniSi(h.dalsiKarta);
         b[3]=true;
         }
@@ -44,32 +46,31 @@ public class PcHrac_3 extends PcHrac_2{
     return b;   
     }
 
-    private int[] hratelneKarty(Hra h) {
-        int zapis=0;
-        int[] in=new int[ruka.size()];
+    private boolean[] hratelneKarty(Hra h) {        
+        boolean[] in=new boolean[ruka.size()];
+        for(int i=0;i<in.length;i++){
+            in[i]=false;
+                    }
         for(int i=0;i<ruka.size();i++){
             if(pravidla(ruka.get(i),h.dalsiKarta)&&(ruka.get(i).getTyp()!=5)){
-                in[zapis]=i;
-                zapis++;
+                in[i]=true;
+                
             }
         }
-        if(zapis<in.length){
-            in[zapis]=-1;
-        }
+        
         return in;
     }
 
-    private int vybratKartu(int[] hratelneKarty, Hra h) {
+    private int vybratKartu(boolean[] hratelneKarty, Hra h) {
         int index=-1;
-        if(hratelneKarty.length!=0){
         int[][] karty=h.balB.zahraneK();
         int[]odpovedi= new int[hratelneKarty.length];
         //vytvori pole s poctem jiz zahranych karet co by se dali zahrat vcetne te co se ma zahrat
         for(int i=0;i<hratelneKarty.length;i++){
             //odhazovaci balicek polde barvy a typu
-            if(hratelneKarty[i]!=-1){
-            int barva=ruka.get(hratelneKarty[i]).getBarva();
-            int typ=ruka.get(hratelneKarty[i]).getTyp();
+            if(hratelneKarty[i]){
+            int barva=ruka.get(i).getBarva();
+            int typ=ruka.get(i).getTyp();
             for(int y=0;y<karty.length;y++){
                 //porovnani barev
              if(karty[y][0]==barva&&karty[y][1]!=5){
@@ -93,10 +94,8 @@ public class PcHrac_3 extends PcHrac_2{
             }
         }
             else{
-                for(int x=i;x<hratelneKarty.length;x++){
-                    odpovedi[x]=Integer.MAX_VALUE;
-                }
-                i=hratelneKarty.length;  
+                
+                    odpovedi[i]=Integer.MAX_VALUE;
             }
         }
         
@@ -107,9 +106,6 @@ public class PcHrac_3 extends PcHrac_2{
                     index=y;
                 } 
                     }
-        
-            
-    }
         return index;
 }
-}
+}   
