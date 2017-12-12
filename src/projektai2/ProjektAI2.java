@@ -17,6 +17,7 @@ import javafx.stage.Stage;
  */
 public class ProjektAI2 extends Application {
     public static int[] vyhry=new int[4];
+    public static int[] vyhryPoradi=new int[5];
     @Override
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("Prvni.fxml"));
@@ -32,11 +33,14 @@ public class ProjektAI2 extends Application {
      */
     public static void main(String[] args) {
         launch(args);
-        System.out.println();
+        System.out.println("typ hracu");
         for(int i=0;i<vyhry.length;i++){
             System.out.print(vyhry[i]+" ");
         }
-        System.out.println();
+        System.out.println("poradi");
+        for(int i=0;i<vyhryPoradi.length;i++){
+            System.out.print(vyhryPoradi[i]+" ");
+        }
     }
     
 }

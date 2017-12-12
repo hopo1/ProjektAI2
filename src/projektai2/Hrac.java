@@ -92,13 +92,11 @@ public class Hrac {
     protected boolean pravidla(Karta k,int[] dalsiKarta){
         boolean b;
         b=((k.getBarva()==dalsiKarta[0])||(k.getTyp()==dalsiKarta[1]));
-        
         //pro svrska
         if(k.getTyp()==5 &&dalsiKarta[2]==0){
             b=true;
         }
         return b;
-    
     }
     protected int pocetKaret(){
         return ruka.size();

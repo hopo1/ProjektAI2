@@ -135,6 +135,7 @@ public class OknoController implements Initializable {
            if(x[1]){
                odh.getChildren().clear();
                ImageView imgVa=h.svrsek.obrazky.get(h.dalsiKarta[0]);
+               System.out.println("Svršek "+h.dalsiKarta[0]);
                imgVa.setFitWidth(30);
                imgVa.setFitHeight(30);
                odh.getChildren().add(imgVa);
@@ -271,6 +272,7 @@ public class OknoController implements Initializable {
         else if(s==PcHrac_3.class){
             ProjektAI2.vyhry[3]+=1;
         }
+        ProjektAI2.vyhryPoradi[h.getHracC()]+=1;
          }
     
 

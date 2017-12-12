@@ -16,7 +16,7 @@ public class PcHrac_2 extends Hrac {
 }
 @Override
     public boolean[] aiFce(Hra h){
-       // vypis();
+       vypis();
         boolean[] b={false,false,false,false}; //jestli hral kartu , jestli hral svrska , jestli vyhral, jestli si liznul
         int karet=ruka.size();
         int karet2=-1;
@@ -36,7 +36,7 @@ public class PcHrac_2 extends Hrac {
             }
         }
         if(!b[0]&&mamSvrska){
-            int hratB=vyberBarvicku(karet2);
+            int hratB=vyberBarvicku(karet);
             karet2=hraj(poziceSvrska,h.dalsiKarta);
             h.dalsiKarta[0]=hratB;
             b[1]=true;
@@ -50,9 +50,9 @@ public class PcHrac_2 extends Hrac {
         
         return b;
     }
-    int vyberBarvicku(int karet2){
+    int vyberBarvicku(int karet){
         int[] barvicky={0,0,0,0};
-            for(int i=0;i<karet2;i++){
+            for(int i=0;i<karet;i++){
                 if(ruka.get(i).getTyp()!=5){
                 barvicky[ruka.get(i).getBarva()]+=1;
             }

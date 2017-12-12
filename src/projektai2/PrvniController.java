@@ -79,7 +79,7 @@ public class PrvniController implements Initializable {
         @FXML
         public void zk(){
             zkouska=true;
-            int hodne=100;
+            int hodne=10000;
             for(int qw=0;qw<hodne;qw++){
             handle();  
 

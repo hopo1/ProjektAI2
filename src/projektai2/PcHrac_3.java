@@ -28,10 +28,11 @@ public class PcHrac_3 extends PcHrac_2{
     karet2=hraj(karta,h.dalsiKarta);
     b[0]=true;
     }
-    else{
+    else if(h.dalsiKarta[2]==0){
         for(int i=0;i<karet;i++){
-            if(ruka.get(i).getTyp()==5&&h.dalsiKarta[2]==0){
+            if(ruka.get(i).getTyp()==5){
             karet2=hraj(i,h.dalsiKarta);
+            h.dalsiKarta[0]=vyberBarvicku(ruka.size());
             b[0]=true;
             b[1]=true;
             i=karet;
